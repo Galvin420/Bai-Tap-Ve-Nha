@@ -9,35 +9,35 @@
 
 #pragma once
 
-namespace fw {
-
-class MyGLContext;
-
-class FWCore
+namespace fw
 {
-public:
-    FWCore(int width, int height);
-    virtual ~FWCore();
+    class GameCore;
+    class MyGLContext;
 
-    virtual int run() = 0;
+    class FWCore
+    {
+    public:
+        FWCore(int width, int height);
+        virtual ~FWCore();
 
-    virtual void setWindowSize(int width, int height) = 0;
-    virtual unsigned int getWindowWidth() { return m_windowWidth; }
-    virtual unsigned int getWindowHeight() { return m_windowHeight; }
+        virtual int run(GameCore* pGame) = 0;
 
-    virtual bool isKeyDown(int value) = 0;
-    virtual bool isMouseButtonDown(int id) = 0;
-    virtual void getMouseCoordinates(int* mx, int* my) = 0;
+        virtual void setWindowSize(int width, int height) = 0;
+        virtual unsigned int getWindowWidth() { return m_windowWidth; }
+        virtual unsigned int getWindowHeight() { return m_windowHeight; }
 
-    virtual void swapBuffers() = 0;
+        virtual bool isKeyDown(int value) = 0;
+        virtual bool isMouseButtonDown(int id) = 0;
+        virtual void getMouseCoordinates(int* mx, int* my) = 0;
 
-    void setEscapeKeyWillQuit(bool value) { m_escapeKeyWillQuit = value; }
+        virtual void swapBuffers() = 0;
 
-protected:
-    bool m_escapeKeyWillQuit = true;
+        void setEscapeKeyWillQuit(bool value) { m_escapeKeyWillQuit = value; }
 
-    int m_windowWidth = -1;
-    int m_windowHeight = -1;
-};
+    protected:
+        bool m_escapeKeyWillQuit = true;
 
+        int m_windowWidth = -1;
+        int m_windowHeight = -1;
+    };
 } // namespace fw

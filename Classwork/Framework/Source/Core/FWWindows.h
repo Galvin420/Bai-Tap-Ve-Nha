@@ -11,51 +11,50 @@
 
 #include "Core/FWCore.h"
 
-namespace fw {
-
-class MyGLContext;
-
-class FWWindows : public FWCore
+namespace fw
 {
-public:
-    FWWindows(int width, int height);
-    virtual ~FWWindows();
+    class MyGLContext;
 
-    virtual int run() override;
+    class FWWindows : public FWCore
+    {
+    public:
+        FWWindows(int width, int height);
+        virtual ~FWWindows();
 
-    virtual bool isKeyDown(int value) override;
-    virtual bool isMouseButtonDown(int id) override;
-    virtual void getMouseCoordinates(int* pMouseX, int* pMouseY) override;
+        virtual int run(GameCore* pGame) override;
 
-    virtual void swapBuffers() override;
+        virtual bool isKeyDown(int value) override;
+        virtual bool isMouseButtonDown(int id) override;
+        virtual void getMouseCoordinates(int* pMouseX, int* pMouseY) override;
 
-    void setWindowSize(int width, int height);
+        virtual void swapBuffers() override;
 
-protected:
-    bool init();
-    void shutdown();
+        void setWindowSize(int width, int height);
 
-    void resizeWindow(int width, int height);
-    bool createGLWindow(const char* title, int width, int height, unsigned char colorBits, unsigned char alphaBits, unsigned char zBits, unsigned char stencilBits, unsigned char multisampleSize, bool fullscreenflag);
-    bool failAndCleanup(const char* pMessage);
-    void killGLWindow(bool destroyInstance);
+    protected:
+        bool init();
+        void shutdown();
 
-    static LRESULT CALLBACK wndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+        void resizeWindow(int width, int height);
+        bool createGLWindow(const char* title, int width, int height, unsigned char colorBits, unsigned char alphaBits, unsigned char zBits, unsigned char stencilBits, unsigned char multisampleSize, bool fullscreenflag);
+        bool failAndCleanup(const char* pMessage);
+        void killGLWindow(bool destroyInstance);
 
-protected:
-    HWND m_hWnd = nullptr;
-    HGLRC m_hRenderingContext = nullptr;
-    HDC m_hDeviceContext = nullptr;
-    HINSTANCE m_hInstance = nullptr;
-    MyGLContext* m_pMyGLContext = nullptr;
+        static LRESULT CALLBACK wndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-    bool m_keyStates[256] = {};
-    bool m_mouseButtonStates[3] = {};
-    bool m_oldKeyStates[256] = {};
-    bool m_oldMouseButtonStates[3] = {};
+    protected:
+        HWND m_hWnd = nullptr;
+        HGLRC m_hRenderingContext = nullptr;
+        HDC m_hDeviceContext = nullptr;
+        HINSTANCE m_hInstance = nullptr;
+        MyGLContext* m_pMyGLContext = nullptr;
 
-    bool m_windowIsActive = false;
-    bool m_fullscreenMode = false;
-};
+        bool m_keyStates[256] = {};
+        bool m_mouseButtonStates[3] = {};
+        bool m_oldKeyStates[256] = {};
+        bool m_oldMouseButtonStates[3] = {};
 
+        bool m_windowIsActive = false;
+        bool m_fullscreenMode = false;
+    };
 } // namespace fw

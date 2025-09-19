@@ -9,30 +9,29 @@
 
 #pragma once
 
-namespace fw {
-
-class MyGLContext
+namespace fw
 {
-protected:
-    // WGLExtensions need to be acquired once per process, done in acquireWGLExtensions().
-    // NOTE: This is not threadsafe.
-    static bool m_WGLExtensionsAcquired;
+    class MyGLContext
+    {
+    protected:
+        // WGLExtensions need to be acquired once per process, done in acquireWGLExtensions().
+        // NOTE: This is not threadsafe.
+        static bool m_WGLExtensionsAcquired;
 
-    HDC m_hDeviceContext;
-    HGLRC m_hRenderingContext;
+        HDC m_hDeviceContext;
+        HGLRC m_hRenderingContext;
 
-protected:
-    void destroyRenderingContext(HDC hDeviceContext);
+    protected:
+        void destroyRenderingContext(HDC hDeviceContext);
 
-public:
-    MyGLContext();
-    ~MyGLContext();
+    public:
+        MyGLContext();
+        ~MyGLContext();
 
-    bool acquireWGLExtensions(HINSTANCE hInstance);
-    bool failAndCleanup(const char* pMessage);
+        bool acquireWGLExtensions(HINSTANCE hInstance);
+        bool failAndCleanup(const char* pMessage);
 
-    bool create(HINSTANCE hInstance, HDC hDeviceContext, int majorVersion, int minorVersion, bool compatibilityMode, unsigned char colorBits, unsigned char alphaBits, unsigned char zBits, unsigned char stencilBits, unsigned char multisampleSize);
-    void destroy();
-};
-
+        bool create(HINSTANCE hInstance, HDC hDeviceContext, int majorVersion, int minorVersion, bool compatibilityMode, unsigned char colorBits, unsigned char alphaBits, unsigned char zBits, unsigned char stencilBits, unsigned char multisampleSize);
+        void destroy();
+    };
 } // namespace fw

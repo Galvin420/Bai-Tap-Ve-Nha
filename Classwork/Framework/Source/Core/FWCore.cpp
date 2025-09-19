@@ -14,23 +14,22 @@
 #include "GL/WGLExtensions.h"
 #include "GL/MyGLContext.h"
 
-namespace fw {
-
-// Initialize opengl window on windows, huge chunks taken from nehe
-//    http://nehe.gamedev.net/tutorial/creating_an_opengl_window_%28win32%29/13001/
-// Update to GL 3+ using this info:
-//    https://mariuszbartosik.com/opengl-4-x-initialization-in-windows-without-a-framework/
-
-// Public methods
-
-FWCore::FWCore(int width, int height)
-    : m_windowWidth( width )
-    , m_windowHeight( height )
+namespace fw
 {
-}
+    // Initialize opengl window on windows, huge chunks taken from nehe
+    //    http://nehe.gamedev.net/tutorial/creating_an_opengl_window_%28win32%29/13001/
+    // Update to GL 3+ using this info:
+    //    https://mariuszbartosik.com/opengl-4-x-initialization-in-windows-without-a-framework/
 
-FWCore::~FWCore()
-{
-}
+    // Public methods
 
+    FWCore::FWCore(int width, int height)
+        : m_windowWidth( width )
+        , m_windowHeight( height )
+    {
+    }
+
+    FWCore::~FWCore()
+    {
+    }
 } // namespace fw

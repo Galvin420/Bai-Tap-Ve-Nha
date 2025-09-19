@@ -12,4 +12,8 @@
 #include "Core/FWCore.h"
 #include "Core/FWWindows.h"
 
+#include "GameCore.h"
+#include "Mesh.h"
+#include "Utility.h"
+
 #endif // GAME_PROJECT

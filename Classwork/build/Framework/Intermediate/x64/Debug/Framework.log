@@ -1,0 +1,9 @@
+﻿  FWCore.cpp
+  FWWindows.cpp
+  GLExtensions.cpp
+  MyGLContext.cpp
+  WGLExtensions.cpp
+  Mesh.cpp
+  Utility.cpp
+  Generating Code...
+  Framework.vcxproj -> C:\Users\vandu\source\repos\Galvin420\25F_GG2\Classwork\build\Framework\x64\Debug\Framework.lib
